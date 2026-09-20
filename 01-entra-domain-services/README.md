@@ -25,3 +25,46 @@
 5. 仮想マシンのネットワークと Domain Services のネットワーク間で VNet ピアリングを構成・確認する。
 6. DNS 名前解決、ネットワーク接続、ドメイン参加を検証する。
 7. Azure の ID、ネットワーク、DNS、ドメイン参加に関する問題のトラブルシューティングを実践する。
+
+## Environment
+
+🇺🇸 The lab was built using the following Azure resources and configuration:
+
+| Component | Configuration |
+|---|---|
+| Microsoft Entra Domain Services | `<managed-domain>.onmicrosoft.com` |
+| Domain Services region | Japan West |
+| Domain Services VNet | `vnet-az104-domainservices` |
+| Domain Services VNet address space | `10.0.0.0/16` |
+| Domain Services subnet | `DomainServices` — `10.0.0.0/24` |
+| VM subnet | `VMSubnet` — `10.0.1.0/24` |
+| Domain controller IPs | `10.0.0.5`, `10.0.0.4` |
+| VM | `vm-az104-ds` |
+| VM region | Japan East |
+| VM VNet | `vm-az104-ds-vnet` |
+| VM VNet address space | `10.1.0.0/16` |
+| VM subnet | `default` — `10.1.1.0/24` |
+| VM private IP | `10.1.1.4` |
+| VM operating system | Windows Server 2022 Datacenter: Azure Edition |
+| VM size | `Standard_B2ats_v2` |
+
+🇯🇵 このラボでは、以下の Azure リソースと構成を使用しました。
+
+| コンポーネント | 構成 |
+|---|---|
+| Microsoft Entra Domain Services | `giuseppettn.onmicrosoft.com` |
+| Domain Services のリージョン | Japan West |
+| Domain Services VNet | `vnet-az104-domainservices` |
+| Domain Services VNet アドレス空間 | `10.0.0.0/16` |
+| Domain Services サブネット | `DomainServices` — `10.0.0.0/24` |
+| VM サブネット | `VMSubnet` — `10.0.1.0/24` |
+| ドメイン コントローラー IP | `10.0.0.5`, `10.0.0.4` |
+| VM | `vm-az104-ds` |
+| VM のリージョン | Japan East |
+| VM VNet | `vm-az104-ds-vnet` |
+| VM VNet アドレス空間 | `10.1.0.0/16` |
+| VM サブネット | `default` — `10.1.1.0/24` |
+| VM プライベート IP | `10.1.1.4` |
+| VM OS | Windows Server 2022 Datacenter: Azure Edition |
+| VM サイズ | `Standard_B2ats_v2` |
+
