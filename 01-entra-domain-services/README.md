@@ -82,3 +82,58 @@ Since this lab was built using Microsoft Azure credits for hands-on study and th
 
 このラボでは Microsoft Azure のクレジットを使用して実践的な学習を行っており、現在のクレジット期間も終了間近であるため、追加のインフラ変更は行わず、今回はサブネット名を `default` のままにすることにしました。
 
+## Architecture
+
+🇺🇸 The following diagram represents the actual Azure infrastructure created and validated during this hands-on lab.
+
+```mermaid
+flowchart TB
+
+    EntraID["Microsoft Entra ID"]
+    
+    EntraID -->|"Synchronization"| AADDS["Microsoft Entra Domain Services"]
+
+    subgraph DS_VNET["vnet-az104-domainservices<br/>10.0.0.0/16"]
+        subgraph DS_SUBNET["DomainServices<br/>10.0.0.0/24"]
+            DC1["Domain Controller<br/>10.0.0.4"]
+            DC2["Domain Controller<br/>10.0.0.5"]
+        end
+
+        VM_SUBNET["VMSubnet<br/>10.0.1.0/24"]
+    end
+
+    AADDS --- DS_VNET
+
+    subgraph VM_VNET["vm-az104-ds-vnet<br/>10.1.0.0/16"]
+        subgraph DEFAULT_SUBNET["default<br/>10.1.1.0/24"]
+            VM["vm-az104-ds<br/>10.1.1.4<br/>Windows Server 2022"]
+        end
+    end
+
+    DS_VNET <-->|"VNet Peering"| VM_VNET
+```
+
+**Key points**
+
+* `vnet-az104-domainservices` contains the Microsoft Entra Domain Services infrastructure.
+* The `DomainServices` subnet contains the two domain controller IP addresses: `10.0.0.4` and `10.0.0.5`.
+* The same VNet also contains the `VMSubnet` subnet.
+* `vm-az104-ds-vnet` is a separate VNet (Virtual Network — rete virtuale Azure) containing the Windows Server VM.
+* The VM is located in the `default` subnet (`10.1.1.0/24`).
+* The two VNets are connected through VNet Peering (Virtual Network Peering — collegamento privato tra reti virtuali Azure).
+* The VM uses the Domain Services DNS (Domain Name System — sistema che risolve i nomi in indirizzi IP) servers through the configured VNet DNS settings.
+* The VM was successfully joined to Microsoft Entra Domain Services.
+
+🇯🇵 以下の図は、このハンズオン ラボで実際に構築・検証した Azure インフラストラクチャを示しています。
+
+**主なポイント**
+
+* `vnet-az104-domainservices` に Microsoft Entra Domain Services の環境を構成しました。
+* `DomainServices` サブネットには、2 台のドメイン コントローラーの IP アドレス `10.0.0.4` と `10.0.0.5` が使用されています。
+* 同じ VNet（Virtual Network — Azure の仮想ネットワーク）内に `VMSubnet` サブネットも構成されています。
+* `vm-az104-ds-vnet` は、Windows Server VM を配置した別の VNet です。
+* VM は `default` サブネット（`10.1.1.0/24`）に配置されています。
+* 2 つの VNet は VNet Peering（Virtual Network Peering — Azure の仮想ネットワーク間を接続する仕組み）によって接続されています。
+* VM では、VNet に設定した DNS（Domain Name System — ドメイン名を IP アドレスに変換する仕組み）サーバーを使用しています。
+* VM が Microsoft Entra Domain Services へのドメイン参加に成功したことを確認しました。
+
