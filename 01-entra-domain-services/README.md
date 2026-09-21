@@ -68,3 +68,17 @@
 | VM OS | Windows Server 2022 Datacenter: Azure Edition |
 | VM サイズ | `Standard_B2ats_v2` |
 
+### Subnet Naming Note
+
+🇺🇸 The VM subnet is named `default` in the current Azure environment.
+
+I originally intended to rename it from `default` to `VMSubnet` to keep the subnet naming consistent with the Domain Services VNet. However, changing a subnet name requires creating a new subnet and moving the VM network interface, which would introduce unnecessary changes to the working environment.
+
+Since this lab was built using Microsoft Azure credits for hands-on study and the current credit period is approaching its expiration date, I decided to leave the subnet name as `default` for now rather than make additional infrastructure changes.
+
+🇯🇵 現在の Azure 環境では、VM のサブネット名は `default` となっています。
+
+当初は、Domain Services VNet とサブネット名を統一するため、`default` から `VMSubnet` へ変更する予定でした。しかし、サブネット名を変更するには新しいサブネットを作成し、VM のネットワーク インターフェースを移動する必要があり、現在正常に動作している環境に不要な変更を加えることになります。
+
+このラボでは Microsoft Azure のクレジットを使用して実践的な学習を行っており、現在のクレジット期間も終了間近であるため、追加のインフラ変更は行わず、今回はサブネット名を `default` のままにすることにしました。
+
