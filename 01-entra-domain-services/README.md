@@ -90,11 +90,14 @@ Since this lab was built using Microsoft Azure credits for hands-on study and th
 flowchart TB
 
     EntraID["Microsoft Entra ID"]
-    
+
     EntraID -->|"Synchronization"| AADDS["Microsoft Entra Domain Services"]
 
     subgraph DS_VNET["vnet-az104-domainservices<br/>10.0.0.0/16"]
+        direction TB
+
         subgraph DS_SUBNET["DomainServices<br/>10.0.0.0/24"]
+            direction LR
             DC1["Domain Controller<br/>10.0.0.4"]
             DC2["Domain Controller<br/>10.0.0.5"]
         end
@@ -105,8 +108,11 @@ flowchart TB
     AADDS --- DS_VNET
 
     subgraph VM_VNET["vm-az104-ds-vnet<br/>10.1.0.0/16"]
+        direction TB
+
         subgraph DEFAULT_SUBNET["default<br/>10.1.1.0/24"]
-            VM["vm-az104-ds<br/>10.1.1.4<br/>Windows Server 2022"]
+            direction TB
+            VM["vm-az104-ds<br/>10.1.1.4<br/>Windows Server 2022 Datacenter: Azure Edition"]
         end
     end
 
