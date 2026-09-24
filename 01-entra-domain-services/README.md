@@ -87,11 +87,13 @@ Since this lab was built using Microsoft Azure credits for hands-on study and th
 🇺🇸 The following diagram represents the actual Azure infrastructure created and validated during this hands-on lab.
 
 ```mermaid
+%%{init: {"themeVariables": {"fontFamily": "Arial, Helvetica, sans-serif"}, "flowchart": {"nodeSpacing": 60, "rankSpacing": 70, "padding": 20}}}%%
 flowchart TB
 
     EntraID["Microsoft Entra ID"]
+    AADDS["Microsoft Entra<br/>Domain Services"]
 
-    EntraID -->|"Synchronization"| AADDS["Microsoft Entra Domain Services"]
+    EntraID -->|"Synchronization"| AADDS
 
     subgraph DS_VNET["vnet-az104-domainservices<br/>10.0.0.0/16"]
         direction TB
@@ -108,15 +110,28 @@ flowchart TB
     AADDS --- DS_VNET
 
     subgraph VM_VNET["vm-az104-ds-vnet<br/>10.1.0.0/16"]
-        direction TB
-
         subgraph DEFAULT_SUBNET["default<br/>10.1.1.0/24"]
-            direction TB
-            VM["vm-az104-ds<br/>10.1.1.4<br/>Windows Server 2022 Datacenter: Azure Edition"]
+            VM["vm-az104-ds<br/>10.1.1.4<br/>Windows Server 2022<br/>Datacenter: Azure Edition"]
         end
     end
 
     DS_VNET <-->|"VNet Peering"| VM_VNET
+
+    %% --- Stile ---
+    classDef identity fill:#0078D4,stroke:#005A9E,stroke-width:2px,color:#FFFFFF
+    classDef dc fill:#DEECF9,stroke:#0078D4,stroke-width:2px,color:#1B1B1B
+    classDef vm fill:#DFF6DD,stroke:#107C10,stroke-width:2px,color:#1B1B1B
+    classDef emptySubnet fill:#F3F2F1,stroke:#8A8886,stroke-width:2px,stroke-dasharray:5 5,color:#1B1B1B
+
+    class EntraID,AADDS identity
+    class DC1,DC2 dc
+    class VM vm
+    class VM_SUBNET emptySubnet
+
+    style DS_VNET fill:transparent,stroke:#0078D4,stroke-width:2px
+    style VM_VNET fill:transparent,stroke:#0078D4,stroke-width:2px
+    style DS_SUBNET fill:transparent,stroke:#8A8886,stroke-width:2px,stroke-dasharray:5 5
+    style DEFAULT_SUBNET fill:transparent,stroke:#8A8886,stroke-width:2px,stroke-dasharray:5 5
 ```
 
 **Key points**
