@@ -87,18 +87,18 @@ Since this lab was built using Microsoft Azure credits for hands-on study and th
 🇺🇸 The following diagram represents the actual Azure infrastructure created and validated during this hands-on lab.
 
 ```mermaid
-%%{init: {"themeVariables": {"fontFamily": "Arial, Helvetica, sans-serif"}, "flowchart": {"nodeSpacing": 60, "rankSpacing": 70, "padding": 20}}}%%
+%%{init: {"themeVariables": {"fontFamily": "Arial, Helvetica, sans-serif", "fontSize": "15px"}, "flowchart": {"htmlLabels": false, "nodeSpacing": 60, "rankSpacing": 70, "padding": 24}}}%%
 flowchart TB
 
     EntraID["Microsoft Entra ID"]
-    AADDS["Microsoft Entra<br/>Domain Services"]
+    AADDS["Microsoft Entra<br/>Domain Services&nbsp;&nbsp;"]
 
     EntraID -->|"Synchronization"| AADDS
 
     subgraph DS_VNET["vnet-az104-domainservices<br/>10.0.0.0/16"]
         direction TB
 
-        subgraph DS_SUBNET["DomainServices<br/>10.0.0.0/24"]
+        subgraph DS_SUBNET["DomainServices&nbsp;&nbsp;<br/>10.0.0.0/24"]
             direction LR
             DC1["Domain Controller<br/>10.0.0.4"]
             DC2["Domain Controller<br/>10.0.0.5"]
