@@ -315,11 +315,11 @@ Test-NetConnection 10.0.0.5 -Port 53
 
 ## 1. Resource Group
 
+🇺🇸 Overview of the resource group and the resources deployed for the lab.
+
+🇯🇵 ラボ用のリソース グループと、デプロイされたリソースの概要です。
+
 ![Resource Group overview](screenshots/01_resource-group-overview.png)
-
-🇺🇸 Resource group containing the resources used in the lab.
-
-🇯🇵 ラボで使用したリソースを含むリソース グループです。
 
 ![Domain Services resources](screenshots/02_rg-domainservices-resources-1.png)
 
@@ -329,11 +329,11 @@ Test-NetConnection 10.0.0.5 -Port 53
 
 ## 2. Microsoft Entra Domain Services
 
+🇺🇸 Overview of the Microsoft Entra Domain Services deployment, health status, properties, and replica sets.
+
+🇯🇵 Microsoft Entra Domain Services のデプロイ、正常性、プロパティ、およびレプリカ セットの概要です。
+
 ![Domain Services health](screenshots/04_entra-ds-health.png)
-
-🇺🇸 Microsoft Entra Domain Services health and deployment status.
-
-🇯🇵 Microsoft Entra Domain Services の正常性とデプロイ状態です。
 
 ![Domain Services properties](screenshots/05_entra-ds-properties-1.png)
 
@@ -344,6 +344,10 @@ Test-NetConnection 10.0.0.5 -Port 53
 ---
 
 ## 3. Virtual Networks
+
+🇺🇸 Overview of the virtual networks and subnet configuration used in the lab.
+
+🇯🇵 ラボで使用した仮想ネットワークとサブネット構成の概要です。
 
 ![Domain Services VNet](screenshots/08_ds-vnet-overview.png)
 
@@ -357,6 +361,10 @@ Test-NetConnection 10.0.0.5 -Port 53
 
 ## 4. VNet Peering
 
+🇺🇸 Overview of the VNet peering configuration and peering status between the two VNets.
+
+🇯🇵 2 つの VNet 間で構成した VNet ピアリングと、その接続状態の概要です。
+
 ![Domain Services VNet peering](screenshots/12_ds-vnet-peering-summary.png)
 
 ![Domain Services VNet peering details](screenshots/13_ds-vnet-peering-detail.png)
@@ -368,6 +376,10 @@ Test-NetConnection 10.0.0.5 -Port 53
 ---
 
 ## 5. Virtual Machine
+
+🇺🇸 Overview of the Windows Server VM, its networking configuration, network interface, NSG rules, image and disk configuration, and domain join extension.
+
+🇯🇵 Windows Server VM の概要、ネットワーク構成、ネットワーク インターフェース、NSG ルール、イメージとディスク構成、およびドメイン参加拡張機能の概要です。
 
 ![Virtual machine overview](screenshots/16_vm-overview.png)
 
@@ -385,23 +397,15 @@ Test-NetConnection 10.0.0.5 -Port 53
 
 ## 6. Validation
 
+🇺🇸 Validation results confirming domain membership, DNS resolution, and DNS network connectivity between the Windows Server VM and the Domain Services domain controllers.
+
+🇯🇵 Windows Server VM のドメイン参加、DNS 名前解決、および Domain Services ドメイン コントローラーへの DNS ネットワーク接続を確認した結果です。
+
 ![Domain join validation](screenshots/22_validation-domainjoin.png)
-
-🇺🇸 Confirms that the Windows Server VM successfully joined the managed domain.
-
-🇯🇵 Windows Server VM がマネージド ドメインへの参加に成功したことを確認しています。
 
 ![DNS resolution validation](screenshots/23_validation-nslookup.png)
 
-🇺🇸 Confirms DNS resolution of `giuseppettn.onmicrosoft.com` to the Domain Services domain controllers.
-
-🇯🇵 `giuseppettn.onmicrosoft.com` が Domain Services のドメイン コントローラーへ名前解決されることを確認しています。
-
 ![DNS connectivity validation](screenshots/24_validation-testnetconnection.png)
-
-🇺🇸 Confirms TCP connectivity to DNS port 53 on both Domain Services domain controllers.
-
-🇯🇵 2 台の Domain Services ドメイン コントローラーに対する DNS TCP 53 番ポートの接続を確認しています。
 
 ---
 
